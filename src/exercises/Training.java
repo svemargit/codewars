@@ -17,9 +17,27 @@ public class Training extends Main {
    * "Mark", "Max"] --> "Alex, Jacob and 2 others like this" Note: For 4 or more names, the number
    * in "and 2 others" simply increases.
    */
-  public static String whoLikesIt(String... names) {
-    // Do your magic here
-    return "";
+  public String whoLikesIt(String... names) {
+    String whoLikesItMessage;
+    int size = names.length;
+    switch (size) {
+      case 0:
+        whoLikesItMessage = "no one likes this";
+        break;
+      case 1:
+        whoLikesItMessage = names[0] + " likes this";
+        break;
+      case 2:
+        whoLikesItMessage = String.format("%s and %s like this", names[0], names[1]);
+        break;
+      case 3:
+        whoLikesItMessage = String.format("%s, %s and %s like this", names[0], names[1], names[2]);
+        break;
+      default:
+        whoLikesItMessage =
+            String.format("%s, %s and %s others like this", names[0], names[1], size - 2);
+    }
+    return whoLikesItMessage;
   }
 
   /**
